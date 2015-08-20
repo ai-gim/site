@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.asiainfo.gim.site.dao.CabinetDao">
+	<resultMap id="cabinet" type="com.asiainfo.gim.site.domain.Cabinet">
+		<id property="id" column="id" />
+		<result property="locationId" column="location_id"/>
+		<result property="name" column="name"/>
+		<result property="size" column="size"/>
+		<result property="properties" column="properties" javaType="java.util.Map" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<insert id="insertCabinet" parameterType="com.asiainfo.gim.site.domain.Cabinet">
+		insert into site_cabinet(id, location_id, name, size, properties)
+		value(#{id}, #{locationId}, #{name}, #{size}, #{properties, jdbcType=VARCHAR});
+	</insert>
+	
+	<select id="listCabinets" resultMap="cabinet" parameterType="com.asiainfo.gim.site.domain.query.CabinetQueryCondition">
+		select * from site_cabinet
+		<where>
+			<if test="locationId != null">
+				location_id = #{locationId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="findCabinetById" resultMap="cabinet" parameterType="java.lang.String">
+		select * from site_cabinet where id = #{id};
+	</select>
+	
+	<select id="findCabinetByName" resultMap="cabinet" parameterType="java.lang.String">
+		select * from site_cabinet where name = #{name};
+	</select>
+	
+	<update id="updateCabinet" parameterType="com.asiainfo.gim.site.domain.Cabinet">
+		update site_cabinet set location_id = #{locationId}, name = #{name}, size = #{size}, properties = #{properties, jdbcType=VARCHAR}
+		where id = #{id};
+	</update>
+	
+	<delete id="deleteCabinet" parameterType="java.lang.String">
+		delete from site_cabinet where id = #{id};
+	</delete>
+	
+</mapper>

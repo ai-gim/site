@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.asiainfo.gim.site.dao.DatacenterDao">
+	<resultMap id="datacenter" type="com.asiainfo.gim.site.domain.Datacenter">
+		<id property="id" column="id" />
+		<result property="name" column="name"/>
+		<result property="description" column="description"/>
+		<result property="properties" column="properties" javaType="java.util.Map" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<insert id="insertDatacenter" parameterType="com.asiainfo.gim.site.domain.Datacenter">
+		insert into site_datacenter(id, name, description, properties)
+		value(#{id}, #{name}, #{description}, #{properties, jdbcType=VARCHAR});
+	</insert>
+	
+	<select id="listDatacenters" resultMap="datacenter">
+		select * from site_datacenter
+	</select>
+	
+	<select id="findDatacenterById" resultMap="datacenter" parameterType="java.lang.String">
+		select * from site_datacenter where id = #{id};
+	</select>
+	
+	<select id="findDatacenterByName" resultMap="datacenter" parameterType="java.lang.String">
+		select * from site_datacenter where name = #{name};
+	</select>
+	
+	<update id="updateDatacenter" parameterType="com.asiainfo.gim.site.domain.Datacenter">
+		update site_datacenter set name = #{name}, description = #{description}, properties = #{properties, jdbcType=VARCHAR}
+		where id = #{id};
+	</update>
+	
+	<delete id="deleteDatacenter" parameterType="java.lang.String">
+		delete from site_datacenter where id = #{id};
+	</delete>
+	
+</mapper>

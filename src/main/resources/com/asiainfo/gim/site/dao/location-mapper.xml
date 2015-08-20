@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.asiainfo.gim.site.dao.LocationDao">
+	<resultMap id="location" type="com.asiainfo.gim.site.domain.Location">
+		<id property="id" column="id" />
+		<result property="datacenterId" column="datacenter_id"/>
+		<result property="name" column="name"/>
+		<result property="site" column="site"/>
+		<result property="floor" column="floor"/>
+		<result property="room" column="room"/>
+		<result property="description" column="description"/>
+		<result property="properties" column="properties" javaType="java.util.Map" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<insert id="insertLocation" parameterType="com.asiainfo.gim.site.domain.Location">
+		insert into site_location(id, datacenter_id, name, site, floor, room, description, properties)
+		value(#{id}, #{datacenterId}, #{name}, #{site}, #{floor}, #{room}, #{description}, #{properties, jdbcType=VARCHAR});
+	</insert>
+	
+	<select id="listLocations" resultMap="location" parameterType="com.asiainfo.gim.site.domain.query.LocationQueryCondition">
+		select * from site_location
+		<where>
+			<if test="datacenterId != null">
+				datacenter_id = #{datacenterId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="findLocationById" resultMap="location" parameterType="java.lang.String">
+		select * from site_location where id = #{id};
+	</select>
+	
+	<select id="findLocationByName" resultMap="location" parameterType="java.lang.String">
+		select * from site_location where name = #{name};
+	</select>
+	
+	<update id="updateLocation" parameterType="com.asiainfo.gim.site.domain.Location">
+		update site_location set datacenter_id = #{datacenterId}, name = #{name}, site = #{site}, 
+		floor = #{floor}, room = #{room}, description = #{description}, properties = #{properties, jdbcType=VARCHAR}
+		where id = #{id};
+	</update>
+	
+	<delete id="deleteLocation" parameterType="java.lang.String">
+		delete from site_location where id = #{id};
+	</delete>
+	
+</mapper>

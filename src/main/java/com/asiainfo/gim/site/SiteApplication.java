@@ -32,6 +32,6 @@ public class SiteApplication extends ResourceConfig
 		register(DefaultExceptionMapper.class);
 		register(LogFilter.class);
 
-//		register(AuthorizationFilter.class);
+		register(AuthorizationFilter.class);
 	}
 }

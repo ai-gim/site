@@ -22,7 +22,7 @@ public interface CabinetDao
 {
 	public List<Cabinet> listCabinets(CabinetQueryCondition cabinetQueryCondition);
 
-	public Cabinet findCabinetById(String id);
+	public Cabinet findCabinetById(Integer id);
 
 	public Cabinet findCabinetByName(String name);
 
@@ -30,5 +30,5 @@ public interface CabinetDao
 
 	public void updateCabinet(Cabinet cabinet);
 
-	public void deleteCabinet(String id);
+	public void deleteCabinet(Integer id);
 }

@@ -33,7 +33,7 @@ public class CabinetListResource
 	private CabinetService cabinetService;
 	
 	@QueryParam("locationId")
-	private String locationId;
+	private Integer locationId;
 	
 	public CabinetListResource()
 	{

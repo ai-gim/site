@@ -17,8 +17,8 @@ import java.util.Map;
  */
 public class Location
 {
-	private String id;
-	private String datacenterId;
+	private Integer id;
+	private Integer datacenterId;
 	private String name;
 	private String site;
 	private String floor;
@@ -26,22 +26,22 @@ public class Location
 	private String description;
 	private Map<String, String> properties;
 
-	public String getId()
+	public Integer getId()
 	{
 		return id;
 	}
 
-	public void setId(String id)
+	public void setId(Integer id)
 	{
 		this.id = id;
 	}
 
-	public String getDatacenterId()
+	public Integer getDatacenterId()
 	{
 		return datacenterId;
 	}
 
-	public void setDatacenterId(String datacenterId)
+	public void setDatacenterId(Integer datacenterId)
 	{
 		this.datacenterId = datacenterId;
 	}

@@ -38,7 +38,7 @@ public class LocationResource
 	private LocationService locationService;
 	
 	@PathParam("id")
-	private String id;
+	private Integer id;
 	
 	public LocationResource()
 	{
@@ -72,7 +72,7 @@ public class LocationResource
 			throw new ValidationException("Name conflict");
 		}
 		
-		if (!StringUtils.isEmpty(location.getId()))
+		if (location.getId() != null)
 		{
 			Location locationInDbById = locationService.findLocationById(location.getId());
 			if (locationInDbById != null)

@@ -21,7 +21,7 @@ public interface DatacenterDao
 {
 	public List<Datacenter> listDatacenters();
 	
-	public Datacenter findDatacenterById(String id);
+	public Datacenter findDatacenterById(Integer id);
 	
 	public Datacenter findDatacenterByName(String name);
 	
@@ -29,5 +29,5 @@ public interface DatacenterDao
 	
 	public void updateDatacenter(Datacenter datacenter);
 	
-	public void deleteDatacenter(String id);
+	public void deleteDatacenter(Integer id);
 }

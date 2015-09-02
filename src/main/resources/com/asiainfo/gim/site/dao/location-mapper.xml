@@ -15,9 +15,10 @@
 		<result property="properties" column="properties" javaType="java.util.Map" jdbcType="VARCHAR"/>
 	</resultMap>
 
-	<insert id="insertLocation" parameterType="com.asiainfo.gim.site.domain.Location">
-		insert into site_location(id, datacenter_id, name, site, floor, room, description, properties)
-		value(#{id}, #{datacenterId}, #{name}, #{site}, #{floor}, #{room}, #{description}, #{properties, jdbcType=VARCHAR});
+	<insert id="insertLocation" parameterType="com.asiainfo.gim.site.domain.Location"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into site_location(datacenter_id, name, site, floor, room, description, properties)
+		value(#{datacenterId}, #{name}, #{site}, #{floor}, #{room}, #{description}, #{properties, jdbcType=VARCHAR});
 	</insert>
 	
 	<select id="listLocations" resultMap="location" parameterType="com.asiainfo.gim.site.domain.query.LocationQueryCondition">
@@ -29,7 +30,7 @@
 		</where>
 	</select>
 	
-	<select id="findLocationById" resultMap="location" parameterType="java.lang.String">
+	<select id="findLocationById" resultMap="location" parameterType="java.lang.Integer">
 		select * from site_location where id = #{id};
 	</select>
 	
@@ -43,7 +44,7 @@
 		where id = #{id};
 	</update>
 	
-	<delete id="deleteLocation" parameterType="java.lang.String">
+	<delete id="deleteLocation" parameterType="java.lang.Integer">
 		delete from site_location where id = #{id};
 	</delete>
 	

@@ -51,7 +51,7 @@ public @interface CabinetValidator
 		{
 			if (StringUtils.equals(context.getMethod(), "POST") || StringUtils.equals(context.getMethod(), "PUT"))
 			{
-				if (StringUtils.isEmpty(cabinet.getName()) || StringUtils.isEmpty(cabinet.getLocationId()))
+				if (StringUtils.isEmpty(cabinet.getName()) || cabinet.getLocationId() == null)
 				{
 					return false;
 				}

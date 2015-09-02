@@ -17,28 +17,28 @@ import java.util.Map;
  */
 public class Cabinet
 {
-	private String id;
-	private String locationId;
+	private Integer id;
+	private Integer locationId;
 	private String name;
 	private Integer size;
 	private Map<String, String> properties;
 
-	public String getId()
+	public Integer getId()
 	{
 		return id;
 	}
 
-	public void setId(String id)
+	public void setId(Integer id)
 	{
 		this.id = id;
 	}
 
-	public String getLocationId()
+	public Integer getLocationId()
 	{
 		return locationId;
 	}
 
-	public void setLocationId(String locationId)
+	public void setLocationId(Integer locationId)
 	{
 		this.locationId = locationId;
 	}

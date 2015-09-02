@@ -38,7 +38,7 @@ public class Main
 
 		// 启动 HTTP Server
 		String host = SpringContext.getProperty("service.site.host");
-		int port = NumberUtils.toInt(SpringContext.getProperty("service.site.port"), 9002);
+		int port = NumberUtils.toInt(SpringContext.getProperty("service.site.port"), 9003);
 
 		URI baseUri = UriBuilder.fromUri("http://" + host).port(port).build();
 		HttpServer server = GrizzlyHttpServerFactory.createHttpServer(baseUri, new SiteApplication());

@@ -11,16 +11,17 @@
 		<result property="properties" column="properties" javaType="java.util.Map" jdbcType="VARCHAR"/>
 	</resultMap>
 
-	<insert id="insertDatacenter" parameterType="com.asiainfo.gim.site.domain.Datacenter">
-		insert into site_datacenter(id, name, description, properties)
-		value(#{id}, #{name}, #{description}, #{properties, jdbcType=VARCHAR});
+	<insert id="insertDatacenter" parameterType="com.asiainfo.gim.site.domain.Datacenter"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into site_datacenter(name, description, properties)
+		value(#{name}, #{description}, #{properties, jdbcType=VARCHAR});
 	</insert>
 	
 	<select id="listDatacenters" resultMap="datacenter">
 		select * from site_datacenter
 	</select>
 	
-	<select id="findDatacenterById" resultMap="datacenter" parameterType="java.lang.String">
+	<select id="findDatacenterById" resultMap="datacenter" parameterType="java.lang.Integer">
 		select * from site_datacenter where id = #{id};
 	</select>
 	
@@ -33,7 +34,7 @@
 		where id = #{id};
 	</update>
 	
-	<delete id="deleteDatacenter" parameterType="java.lang.String">
+	<delete id="deleteDatacenter" parameterType="java.lang.Integer">
 		delete from site_datacenter where id = #{id};
 	</delete>
 	

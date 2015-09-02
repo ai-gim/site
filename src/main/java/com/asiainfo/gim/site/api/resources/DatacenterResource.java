@@ -38,7 +38,7 @@ public class DatacenterResource
 	private DatacenterService datacenterService;
 	
 	@PathParam("id")
-	private String id;
+	private Integer id;
 	
 	public DatacenterResource()
 	{
@@ -72,7 +72,7 @@ public class DatacenterResource
 			throw new ValidationException("Name conflict");
 		}
 		
-		if (!StringUtils.isEmpty(datacenter.getId()))
+		if (datacenter.getId() != null)
 		{
 			Datacenter datacenterInDbById = datacenterService.findDatacenterById(datacenter.getId());
 			if (datacenterInDbById != null)

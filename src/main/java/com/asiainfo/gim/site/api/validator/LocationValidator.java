@@ -51,7 +51,7 @@ public @interface LocationValidator
 		{
 			if (StringUtils.equals(context.getMethod(), "POST") || StringUtils.equals(context.getMethod(), "PUT"))
 			{
-				if (StringUtils.isEmpty(location.getName()) || StringUtils.isEmpty(location.getDatacenterId()))
+				if (StringUtils.isEmpty(location.getName()) || location.getDatacenterId() == null)
 				{
 					return false;
 				}

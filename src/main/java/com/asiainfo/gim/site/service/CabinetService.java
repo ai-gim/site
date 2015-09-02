@@ -10,11 +10,9 @@
 package com.asiainfo.gim.site.service;
 
 import java.util.List;
-import java.util.UUID;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.asiainfo.gim.site.dao.CabinetDao;
@@ -41,7 +39,7 @@ public class CabinetService
 		return cabinetDao.listCabinets(cabinetQueryCondition);
 	}
 
-	public Cabinet findCabinetById(String id)
+	public Cabinet findCabinetById(Integer id)
 	{
 		return cabinetDao.findCabinetById(id);
 	}
@@ -53,11 +51,6 @@ public class CabinetService
 
 	public Cabinet addCabinet(Cabinet cabinet)
 	{
-		if (StringUtils.isEmpty(cabinet.getId()))
-		{
-			cabinet.setId(UUID.randomUUID().toString());
-		}
-		
 		cabinetDao.insertCabinet(cabinet);
 		
 		return findCabinetById(cabinet.getId());
@@ -69,7 +62,7 @@ public class CabinetService
 		return findCabinetById(cabinet.getId());
 	}
 
-	public void deleteCabinet(String id)
+	public void deleteCabinet(Integer id)
 	{
 		cabinetDao.deleteCabinet(id);
 	}

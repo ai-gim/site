@@ -22,7 +22,7 @@ public interface LocationDao
 {
 	public List<Location> listLocations(LocationQueryCondition locationQueryCondition);
 	
-	public Location findLocationById(String id);
+	public Location findLocationById(Integer id);
 	
 	public Location findLocationByName(String name);
 	
@@ -30,5 +30,5 @@ public interface LocationDao
 	
 	public void updateLocation(Location location);
 	
-	public void deleteLocation(String id);
+	public void deleteLocation(Integer id);
 }

@@ -10,11 +10,9 @@
 package com.asiainfo.gim.site.service;
 
 import java.util.List;
-import java.util.UUID;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.asiainfo.gim.site.dao.DatacenterDao;
@@ -40,7 +38,7 @@ public class DatacenterService
 		return datacenterDao.listDatacenters();
 	}
 	
-	public Datacenter findDatacenterById(String id)
+	public Datacenter findDatacenterById(Integer id)
 	{
 		return datacenterDao.findDatacenterById(id);
 	}
@@ -52,11 +50,6 @@ public class DatacenterService
 	
 	public Datacenter addDatacenter(Datacenter datacenter)
 	{
-		if (StringUtils.isEmpty(datacenter.getId()))
-		{
-			datacenter.setId(UUID.randomUUID().toString());
-		}
-		
 		datacenterDao.insertDatacenter(datacenter);
 		
 		return findDatacenterById(datacenter.getId());
@@ -69,7 +62,7 @@ public class DatacenterService
 		return findDatacenterById(datacenter.getId());
 	}
 	
-	public void deleteDatacenter(String id)
+	public void deleteDatacenter(Integer id)
 	{
 		datacenterDao.deleteDatacenter(id);
 	}

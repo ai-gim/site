@@ -33,7 +33,7 @@ public class LocationListResource
 	private LocationService locationService;
 	
 	@QueryParam("datacenterId")
-	private String datacenterId;
+	private Integer datacenterId;
 	
 	public LocationListResource()
 	{

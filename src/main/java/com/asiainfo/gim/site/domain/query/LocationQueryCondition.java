@@ -15,14 +15,14 @@ package com.asiainfo.gim.site.domain.query;
  */
 public class LocationQueryCondition extends QueryCondition
 {
-	private String datacenterId;
+	private Integer datacenterId;
 
-	public String getDatacenterId()
+	public Integer getDatacenterId()
 	{
 		return datacenterId;
 	}
 
-	public void setDatacenterId(String datacenterId)
+	public void setDatacenterId(Integer datacenterId)
 	{
 		this.datacenterId = datacenterId;
 	}

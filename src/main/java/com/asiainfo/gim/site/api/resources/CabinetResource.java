@@ -38,7 +38,7 @@ public class CabinetResource
 	private CabinetService cabinetService;
 	
 	@PathParam("id")
-	private String id;
+	private Integer id;
 	
 	public CabinetResource()
 	{
@@ -72,7 +72,7 @@ public class CabinetResource
 			throw new ValidationException("Name conflict");
 		}
 		
-		if (!StringUtils.isEmpty(cabinet.getId()))
+		if (cabinet.getId() != null)
 		{
 			Cabinet cabinetInDbById = cabinetService.findCabinetById(cabinet.getId());
 			if (cabinetInDbById != null)

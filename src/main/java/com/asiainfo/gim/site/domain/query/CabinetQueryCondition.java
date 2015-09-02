@@ -15,14 +15,14 @@ package com.asiainfo.gim.site.domain.query;
  */
 public class CabinetQueryCondition extends QueryCondition
 {
-	private String locationId;
+	private Integer locationId;
 
-	public String getLocationId()
+	public Integer getLocationId()
 	{
 		return locationId;
 	}
 
-	public void setLocationId(String locationId)
+	public void setLocationId(Integer locationId)
 	{
 		this.locationId = locationId;
 	}

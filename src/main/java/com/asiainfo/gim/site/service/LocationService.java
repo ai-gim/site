@@ -10,11 +10,9 @@
 package com.asiainfo.gim.site.service;
 
 import java.util.List;
-import java.util.UUID;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.asiainfo.gim.site.dao.LocationDao;
@@ -41,7 +39,7 @@ public class LocationService
 		return locationDao.listLocations(locationQueryCondition);
 	}
 	
-	public Location findLocationById(String id)
+	public Location findLocationById(Integer id)
 	{
 		return locationDao.findLocationById(id);
 	}
@@ -53,11 +51,6 @@ public class LocationService
 	
 	public Location addLocation(Location location)
 	{
-		if (StringUtils.isEmpty(location.getId()))
-		{
-			location.setId(UUID.randomUUID().toString());
-		}
-		
 		locationDao.insertLocation(location);
 		
 		return findLocationById(location.getId());
@@ -70,7 +63,7 @@ public class LocationService
 		return findLocationById(location.getId());
 	}
 	
-	public void deleteLocation(String id)
+	public void deleteLocation(Integer id)
 	{
 		locationDao.deleteLocation(id);
 	}

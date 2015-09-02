@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `site_datacenter` (
-  `id` VARCHAR(64) NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NULL,
   `properties` TEXT NULL,
@@ -9,8 +9,8 @@ CREATE TABLE IF NOT EXISTS `site_datacenter` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `site_location` (
-  `id` VARCHAR(64) NOT NULL,
-  `datacenter_id` VARCHAR(64) NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `datacenter_id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `site` VARCHAR(45) NULL,
   `floor` VARCHAR(45) NULL,
@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS `site_location` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `site_cabinet` (
-  `id` VARCHAR(64) NOT NULL,
-  `location_id` VARCHAR(64) NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `location_id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `size` INT NULL,
   `properties` TEXT NULL,

@@ -1,0 +1,35 @@
+#!/bin/bash
+# chkconfig: - 93 75
+# description: gim site service
+
+start() {
+/usr/local/lib/gim/site/bin/gim-site start
+}
+
+stop() {
+/usr/local/lib/gim/site/bin/gim-site stop
+}
+
+status() {
+/usr/local/lib/gim/site/bin/gim-site status
+}
+
+# See how we were called.
+case "$1" in
+  start)
+start
+;;
+  status)
+status
+;;
+  stop)
+stop
+;;
+  restart)
+stop
+start
+;;
+  *)
+echo $"Usage: $0 {start|stop|status|restart}"
+exit 2
+esac

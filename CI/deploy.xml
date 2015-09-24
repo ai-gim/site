@@ -1,35 +1,15 @@
 <project name="gim-site-deploy" default="build" basedir="..">
-	
-	<property name="USER" value="root"></property>
-	<property name="PASSWD" value="123456"></property>
-	<property name="HOST" value="172.16.102.122"></property>
-	
 	<target name="deploy">
 		<scp todir="${USER}:${PASSWD}@${HOST}:/usr/local/lib/gim" trust="true">
 			<fileset dir="temp">
-				<include name="site.zip"/>
-			</fileset>
-		</scp>
-		<scp todir="${USER}:${PASSWD}@172.16.101.101:/usr/local/lib/gim" trust="true">
-			<fileset dir="temp">
-				<include name="site.zip"/>
+				<include name="site.tar.gz"/>
 			</fileset>
 		</scp>
 		<sshexec host="${HOST}" username="${USER}"  password="${PASSWD}" trust="true" command="
 			cd /usr/local/lib/gim;
 			rm -rf site;
-			unzip site.zip;
-			rm -rf site.zip;
-			cd site/bin;
-			chmod 755 *;
-			./gim-site stop;
-			./gim-site start;
-			"/>
-		<sshexec host="172.16.101.101" username="${USER}"  password="${PASSWD}" trust="true" command="
-			cd /usr/local/lib/gim;
-			rm -rf site;
-			unzip site.zip;
-			rm -rf site.zip;
+			tar -xzvf site.tar.gz;
+			rm -rf site.tar.gz;
 			cd site/bin;
 			chmod 755 *;
 			./gim-site stop;

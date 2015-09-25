@@ -12,6 +12,7 @@
 		<copydir dest="temp/site/bin" src="bin"></copydir>
 		<copydir dest="temp/site/conf" src="conf"></copydir>
 		<copydir dest="temp/site/init.d" src="init.d"></copydir>
+		<copydir dest="temp/site/sql" src="sql"></copydir>
 		<copy tofile="temp/site/site.jar" file="target/site-${VERSION}.jar"></copy>
 	</target>
 	
